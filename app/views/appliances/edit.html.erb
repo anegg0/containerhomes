@@ -1,6 +1,5 @@
-<h1>Editing appliance</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @appliance %> |
-<%= link_to 'Back', appliances_path %>
+<%- model_class = Appliance -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Appliance %></h1>
+</div>
+<%= render :partial => 'form' %>
