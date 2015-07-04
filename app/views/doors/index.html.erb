@@ -1,23 +1,34 @@
-<h1>Listing doors</h1>
-
-<table>
+<%- model_class = Door -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Door %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @doors.each do |door| %>
       <tr>
-        <td><%= link_to 'Show', door %></td>
-        <td><%= link_to 'Edit', edit_door_path(door) %></td>
-        <td><%= link_to 'Destroy', door, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= door.id %></td>
+        <td><%=l door.created_at, format: :long %></td>
+        <td>
+          <%= link_to door_path(door), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to door_path(door), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Door', new_door_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_door_path,
+            :class => 'btn btn-primary' %>
