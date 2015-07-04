@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :roofs
+
   resources :lands
 
   resources :heating_systems
