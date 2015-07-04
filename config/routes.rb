@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :windows
+
   resources :floors
 
   resources :doors
