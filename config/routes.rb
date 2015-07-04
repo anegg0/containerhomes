@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :homes
+
   resources :roofs
 
   resources :lands
